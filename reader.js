@@ -54,14 +54,14 @@ const makeDirectoryLoader = async entry => {
 }
 
 const isCBZ = ({ name, type }) =>
-    type === 'application/vnd.comicbook+zip' || name.endsWith('.cbz')
+    type === 'application/vnd.comicbook+zip' || name?.endsWith('.cbz')
 
 const isFB2 = ({ name, type }) =>
-    type === 'application/x-fictionbook+xml' || name.endsWith('.fb2')
+    type === 'application/x-fictionbook+xml' || name?.endsWith('.fb2')
 
 const isFBZ = ({ name, type }) =>
     type === 'application/x-zip-compressed-fb2'
-    || name.endsWith('.fb2.zip') || name.endsWith('.fbz')
+    || name.endsWith('.fb2.zip') || name?.endsWith('.fbz')
 
 const getView = async file => {
     let book
@@ -114,7 +114,7 @@ const getCSS = ({ spacing, justify, hyphenate }) => `
         color-scheme: light dark;
     }
     /* https://github.com/whatwg/html/issues/5426 */
-    @media (prefers-color-scheme: dark) {
+    @media (prefers-color-scheme: light) {
         a:link {
             color: lightblue;
         }
